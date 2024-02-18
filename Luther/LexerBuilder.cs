@@ -32,6 +32,14 @@ namespace Luth
             return this;
         }
 
+        public LexerBuilder ConfigureLanguage(string language, Assembly assembly)
+        {
+            var factory = new AssemblyFactory();
+            factory[language] = assembly;
+            _assembly = factory[language];
+            return this;
+        }
+
         public Lexer Build()
         {
             List<IIdentifier> identifiers = _assembly
