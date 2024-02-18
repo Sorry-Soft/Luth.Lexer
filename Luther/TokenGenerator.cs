@@ -26,12 +26,6 @@ namespace Luth
                         Color = identifier.Color,
                         InError = identifier.IsInError(previousToken)
                     };
-
-                    //i know! i know this is not a good idea. but ive only gone and done it anyway.
-                    if (previousToken.Type == TokenTypes.WhiteSpace)
-                    {
-                        previousToken = token;
-                    }
                     return token;
                 }
             }
@@ -40,7 +34,8 @@ namespace Luth
             return new Token()
             {
                 Type = TokenTypes.Unknown,
-                Color = Color.White
+                Color = Color.White,
+                Value = input
             };
         }
     }
