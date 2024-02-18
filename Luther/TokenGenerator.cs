@@ -34,7 +34,8 @@ namespace Luth
             return new Token()
             {
                 Type = TokenTypes.Unknown,
-                Color = Color.White
+                Color = Color.White,
+                Value = input
             };
         }
     }
