@@ -7,10 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luth", "Luther\Luth.csproj"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luth.IntergrationPack", "Luther.IntergrationPack\Luth.IntergrationPack.csproj", "{9C43174C-2C70-4A1D-8DA2-0B55B0CDE94D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhpTopLevelLanguagePack", "PhpTopLevel\PhpTopLevelLanguagePack.csproj", "{66B8B000-6169-4EFB-B0B6-13596E86362D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Runner", "Runner\Runner.csproj", "{910A602B-BF53-4DBB-ADF3-2C23B7FAF91C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,14 +21,6 @@ Global
 		{9C43174C-2C70-4A1D-8DA2-0B55B0CDE94D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C43174C-2C70-4A1D-8DA2-0B55B0CDE94D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C43174C-2C70-4A1D-8DA2-0B55B0CDE94D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{66B8B000-6169-4EFB-B0B6-13596E86362D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{66B8B000-6169-4EFB-B0B6-13596E86362D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{66B8B000-6169-4EFB-B0B6-13596E86362D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{66B8B000-6169-4EFB-B0B6-13596E86362D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{910A602B-BF53-4DBB-ADF3-2C23B7FAF91C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{910A602B-BF53-4DBB-ADF3-2C23B7FAF91C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{910A602B-BF53-4DBB-ADF3-2C23B7FAF91C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{910A602B-BF53-4DBB-ADF3-2C23B7FAF91C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
