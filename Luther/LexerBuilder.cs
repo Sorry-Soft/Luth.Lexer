@@ -47,7 +47,7 @@ namespace Luth
                 .InstantiateAllAs<IIdentifier>();
 
             List<IPretokenMutation> preTokenMutations = _assembly
-                .GetTypesWithInterfaceName("IPreTokenMutation")
+                .GetTypesWithInterfaceName("IPretokenMutation")
                 .InstantiateAllAs<IPretokenMutation>();
 
             preTokenMutations.AddRange(internalPretokenMutations);
