@@ -8,6 +8,7 @@ namespace Luth
         private Assembly _assembly = Assembly.GetExecutingAssembly();
         private TokenGenerator tokenGenerator = new TokenGenerator();
         private List<IPretokenMutation> internalPretokenMutations = new List<IPretokenMutation>();
+        private AssemblyFactory _assemblyFactory = new();
 
         public LexerBuilder ConfigureisUsingInternalNewLineMutation()
         {
@@ -34,20 +35,36 @@ namespace Luth
 
         public LexerBuilder ConfigureLanguage(string language, Assembly assembly)
         {
-            var factory = new AssemblyFactory();
-            factory[language] = assembly;
-            _assembly = factory[language];
+            //var factory = new AssemblyFactory();
+            _assemblyFactory[language] = assembly;
+            _assembly = _assemblyFactory[language];
             return this;
         }
 
-        public Lexer Build()
+        public LexerBuilder ConfigureLanguages(Dictionary<string, Assembly> languages)
         {
+            foreach ( var language in languages.Keys )
+            {
+                var assembly = languages[language];
+
+                _assemblyFactory[language] = assembly;
+                _assembly = _assemblyFactory[language];
+
+            }
+            
+            return this;
+        }
+
+        public Lexer Build(string language)
+        {
+            _assembly = _assemblyFactory[language];
+
             List<IIdentifier> identifiers = _assembly
-                .GetTypesWithInterfaceName("IIdentifier")
+                .GetTypesWithInterfaceName(nameof(IIdentifier))
                 .InstantiateAllAs<IIdentifier>();
 
             List<IPretokenMutation> preTokenMutations = _assembly
-                .GetTypesWithInterfaceName("IPreTokenMutation")
+                .GetTypesWithInterfaceName(nameof(IPretokenMutation))
                 .InstantiateAllAs<IPretokenMutation>();
 
             preTokenMutations.AddRange(internalPretokenMutations);

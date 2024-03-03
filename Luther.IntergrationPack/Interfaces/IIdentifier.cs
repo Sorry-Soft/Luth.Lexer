@@ -40,7 +40,7 @@ namespace Luth.IntergrationPack.Interfaces
     {
         int Orderby { get; }
         bool MatchesRule(string input);
-        public bool IsInError(Token? previousToken);
+        public bool IsInError(Token? previousToken, Token? nextToken);
         string TokenType { get; }
         Color Color { get; }
     }

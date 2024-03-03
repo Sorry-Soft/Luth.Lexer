@@ -13,8 +13,9 @@ namespace Luth
             this.identifiers = identifiers;
         }
 
-        internal Token Generate(string input, Token? previousToken) 
+        internal Token Generate(string input, Token? previousToken, Token nextToken = null) 
         {
+            Token ErrorMatch = null;
             foreach (IIdentifier identifier in identifiers.OrderBy(i=>i.Orderby))
             {
                 if (identifier.MatchesRule(input))
@@ -24,9 +25,16 @@ namespace Luth
                         Type = identifier.TokenType,
                         Value = input,
                         Color = identifier.Color,
-                        InError = identifier.IsInError(previousToken)
+                        InError = identifier.IsInError(previousToken, nextToken)
                     };
-                    return token;
+                    if (token.InError)
+                    {
+                        ErrorMatch = token;
+                    }
+                    else
+                    {
+                        return token;
+                    }
                 }
             }
 
