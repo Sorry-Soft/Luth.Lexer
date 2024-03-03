@@ -2,13 +2,13 @@
 
 namespace Luth
 {
-    internal class AssemblyFactory
+    internal class AssemblyStore
     {
 
         Dictionary<string, Assembly> _assemlblyMap = new Dictionary<string, Assembly>();
-        internal AssemblyFactory()
+        internal AssemblyStore()
         {
-            string path = Path.GetDirectoryName(Assembly.GetAssembly(typeof(AssemblyFactory)).Location) + "\\LanguagePacks";
+            string path = Path.GetDirectoryName(Assembly.GetAssembly(typeof(AssemblyStore)).Location) + "\\LanguagePacks";
             if (Directory.Exists(path))
             {
                 foreach (string dll in Directory.GetFiles(path, "*LanguagePack*.dll"))
@@ -34,7 +34,7 @@ namespace Luth
                 {
                     return assembly;
                 }
-                return Assembly.GetExecutingAssembly();
+                throw new Exception("there wasn't an assembly loaded with the given name");
             }
             set
             {

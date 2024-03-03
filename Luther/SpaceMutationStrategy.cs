@@ -8,9 +8,9 @@ namespace Luth
 
         public string NewValue => " <space> ";
 
-        public string Mutate(string input)
-        {
-            return input.Replace(OldValue, NewValue);
-        }
+        public string Mutate(string input) => input.Replace(OldValue, NewValue);
+        public string Revert(string input) => input.Replace(NewValue, OldValue);
+
+        public int GetOrderBy() => 1;
     }
 }

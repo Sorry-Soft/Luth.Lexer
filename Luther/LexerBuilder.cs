@@ -8,6 +8,7 @@ namespace Luth
         private Assembly _assembly = Assembly.GetExecutingAssembly();
         private TokenGenerator tokenGenerator = new TokenGenerator();
         private List<IPretokenMutation> internalPretokenMutations = new List<IPretokenMutation>();
+        private AssemblyStore _assemblyFactory = new();
 
         public LexerBuilder ConfigureisUsingInternalNewLineMutation()
         {
@@ -28,26 +29,47 @@ namespace Luth
 
         public LexerBuilder ConfigureLanguage(string language)
         {
-            _assembly = new AssemblyFactory()[language];
+            _assembly = new AssemblyStore()[language];
             return this;
         }
 
         public LexerBuilder ConfigureLanguage(string language, Assembly assembly)
         {
-            var factory = new AssemblyFactory();
-            factory[language] = assembly;
-            _assembly = factory[language];
+            //var factory = new AssemblyFactory();
+            _assemblyFactory[language] = assembly;
+            _assembly = _assemblyFactory[language];
             return this;
+        }
+
+        public LexerBuilder ConfigureLanguages(Dictionary<string, Assembly> languages)
+        {
+            foreach ( var language in languages.Keys )
+            {
+                var assembly = languages[language];
+
+                _assemblyFactory[language] = assembly;
+                _assembly = _assemblyFactory[language];
+
+            }
+            
+            return this;
+        }
+
+        public Lexer Build(string language)
+        {
+            _assembly = _assemblyFactory[language];
+            return Build();
         }
 
         public Lexer Build()
         {
+
             List<IIdentifier> identifiers = _assembly
-                .GetTypesWithInterfaceName("IIdentifier")
+                .GetTypesWithInterfaceName(nameof(IIdentifier))
                 .InstantiateAllAs<IIdentifier>();
 
             List<IPretokenMutation> preTokenMutations = _assembly
-                .GetTypesWithInterfaceName("IPretokenMutation")
+                .GetTypesWithInterfaceName(nameof(IPretokenMutation))
                 .InstantiateAllAs<IPretokenMutation>();
 
             preTokenMutations.AddRange(internalPretokenMutations);
