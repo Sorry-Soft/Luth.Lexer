@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luth", "Luther\Luth.csproj", "{902DC678-A43C-44F6-84BC-CDDC8A1174C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luth", "Luther\Luth.csproj", "{902DC678-A43C-44F6-84BC-CDDC8A1174C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Luth.IntergrationPack", "Luther.IntergrationPack\Luth.IntergrationPack.csproj", "{9C43174C-2C70-4A1D-8DA2-0B55B0CDE94D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Luth.IntergrationPack", "Luther.IntergrationPack\Luth.IntergrationPack.csproj", "{9C43174C-2C70-4A1D-8DA2-0B55B0CDE94D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

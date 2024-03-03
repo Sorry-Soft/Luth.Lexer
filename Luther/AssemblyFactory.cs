@@ -8,15 +8,15 @@ namespace Luth
         Dictionary<string, Assembly> _assemlblyMap = new Dictionary<string, Assembly>();
         internal AssemblyFactory()
         {
-            //string path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location + "\\LanguagePacks");
-            //if (File.Exists(path))
-            //{
-            //    foreach (string dll in Directory.GetFiles(path, "*LanguagePack*.dll"))
-            //    {
-            //        Assembly assembly = Assembly.Load(dll);
-            //        _assemlblyMap.Add(assembly.FullName, assembly);
-            //    }
-            //}
+            string path = Path.GetDirectoryName(Assembly.GetAssembly(typeof(AssemblyFactory)).Location) + "\\LanguagePacks";
+            if (Directory.Exists(path))
+            {
+                foreach (string dll in Directory.GetFiles(path, "*LanguagePack*.dll"))
+                {
+                    Assembly assembly = Assembly.LoadFile(dll);
+                    _assemlblyMap.Add(assembly.GetName().Name, assembly);
+                }
+            }
         }
 
         internal void AddLanguagePack(string language, Assembly assembly)
