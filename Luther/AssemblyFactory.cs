@@ -13,7 +13,7 @@ namespace Luth
             {
                 foreach (string dll in Directory.GetFiles(path, "*LanguagePack*.dll"))
                 {
-                    Assembly assembly = Assembly.LoadFile(dll);
+                    Assembly assembly = Assembly.Load(dll);
                     _assemlblyMap.Add(assembly.GetName().Name, assembly);
                 }
             }
