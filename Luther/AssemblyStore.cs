@@ -34,7 +34,7 @@ namespace Luth
                 {
                     return assembly;
                 }
-                return Assembly.GetExecutingAssembly();
+                throw new Exception("there wasn't an assembly loaded with the given name");
             }
             set
             {

@@ -58,6 +58,11 @@ namespace Luth
         public Lexer Build(string language)
         {
             _assembly = _assemblyFactory[language];
+            return Build();
+        }
+
+        public Lexer Build()
+        {
 
             List<IIdentifier> identifiers = _assembly
                 .GetTypesWithInterfaceName(nameof(IIdentifier))
