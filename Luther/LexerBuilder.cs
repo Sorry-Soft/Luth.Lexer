@@ -8,7 +8,7 @@ namespace Luth
         private Assembly _assembly = Assembly.GetExecutingAssembly();
         private TokenGenerator tokenGenerator = new TokenGenerator();
         private List<IPretokenMutation> internalPretokenMutations = new List<IPretokenMutation>();
-        private AssemblyFactory _assemblyFactory = new();
+        private AssemblyStore _assemblyFactory = new();
 
         public LexerBuilder ConfigureisUsingInternalNewLineMutation()
         {
@@ -29,7 +29,7 @@ namespace Luth
 
         public LexerBuilder ConfigureLanguage(string language)
         {
-            _assembly = new AssemblyFactory()[language];
+            _assembly = new AssemblyStore()[language];
             return this;
         }
 
